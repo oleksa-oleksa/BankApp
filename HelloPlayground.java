@@ -1,3 +1,5 @@
+import java.time.Year;
+
 public class HelloPlayground {
     /*
      * Every Java program has at least one class. Here, the class name is HelloWorld.
@@ -19,13 +21,20 @@ public class HelloPlayground {
 
      */
     public static void main (String[] args) {
-        int remainder = 10 % 3;
         int year = 2025;
         double hours = 1.5;
         int days = 5;
         String wish = "I wish to improve my programming skills. ";
-        System.out.println("Hello World! Alexandra dives in Java Programming! " + wish + 
-        "In next year " + year + " I gonna spend at least " + (hours * days) + 
-        " hours per week to reach my goal!");
-    }
+        if (Year.now().getValue() < year) {
+            System.out.println("Hello World! Alexandra dives in Java Programming! " + wish + 
+            "In next year " + year + " I gonna spend at least " + (hours * days) + 
+            " hours per week to reach my goal!");
+
+            // Automatically inserts spaces
+            System.out.println(String.format("Next %d year I gonna spend at least %.2f hours a week to learn Java!", year, hours * days));
+        }
+        else {
+            System.out.println("It is already the year " + year + "! Dreams come true!");
+        }   
+        }        
 }
