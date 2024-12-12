@@ -1,11 +1,11 @@
 package src;
 
 class Person {
-    private String name;
-    private int age;
-    private String iban;
-    private double account_balance;
-    private String address;
+    protected String name;
+    protected int age;
+    protected String iban;
+    protected double account_balance;
+    protected String address;
 
     // Default constructor
     public Person() {
@@ -27,6 +27,10 @@ class Person {
 
     }
 
+    public void displayInfo() {
+        System.out.println(String.format("I am %s, %d years old. My adress is %s. Account status is: %.2f", 
+                                                 name, age, address, account_balance));
+    }
     public String getName() {
         return name;
     }
