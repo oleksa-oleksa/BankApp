@@ -5,8 +5,27 @@ class Person {
     private int age;
     private String iban;
     private double account_balance;
-    private double amount;
     private String address;
+
+    // Default constructor
+    public Person() {
+        this.name = "Unknown";
+        this.age = 0;
+    }
+
+    // Parameterized constructor
+    public Person(String name, 
+                  int age, 
+                  String iban, 
+                  double account_balance,
+                  String address) {
+        this.name = name;
+        this.age = age;
+        this.iban = iban;
+        this.account_balance = account_balance;
+        this.address = address;
+
+    }
 
     public String getName() {
         return name;
@@ -42,14 +61,6 @@ class Person {
 
     public void SetAccountBalance(double account_balance) {
         this.account_balance = account_balance;
-    } 
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void SetAmount(double amount) {
-        this.amount = amount;
     } 
 
     public String getAddress() {
