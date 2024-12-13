@@ -4,7 +4,6 @@ public abstract class Person {
     private String name;
     private int age;
     private String iban;
-    private double account_balance;
     private String address;
 
     // Default constructor
@@ -17,19 +16,17 @@ public abstract class Person {
     public Person(String name, 
                   int age, 
                   String iban, 
-                  double account_balance,
                   String address) {
         this.name = name;
         this.age = age;
         this.iban = iban;
-        this.account_balance = account_balance;
         this.address = address;
 
     }
 
     public void displayInfo() {
-        System.out.println(String.format("I am %s, %d years old. My adress is %s. Account status is: %.2f", 
-                                                 name, age, address, account_balance));
+        System.out.println(String.format("I am %s, %d years old. My adress is %s.", 
+                                                 name, age, address));
     }
     // Abstract method for role-specific information
     public abstract String getRole();
@@ -60,14 +57,6 @@ public abstract class Person {
 
     public void setIban(String iban) {
         this.iban = iban;
-    } 
-
-    public double getAccountBalance() {
-        return account_balance;
-    }
-
-    public void SetAccountBalance(double account_balance) {
-        this.account_balance = account_balance;
     } 
 
     public String getAddress() {
