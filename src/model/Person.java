@@ -1,11 +1,11 @@
 package src;
 
-class Person {
-    protected String name;
-    protected int age;
-    protected String iban;
-    protected double account_balance;
-    protected String address;
+public abstract class Person {
+    private String name;
+    private int age;
+    private String iban;
+    private double account_balance;
+    private String address;
 
     // Default constructor
     public Person() {
@@ -31,6 +31,9 @@ class Person {
         System.out.println(String.format("I am %s, %d years old. My adress is %s. Account status is: %.2f", 
                                                  name, age, address, account_balance));
     }
+    // Abstract method for role-specific information
+    public abstract String getRole();
+
     public String getName() {
         return name;
     }

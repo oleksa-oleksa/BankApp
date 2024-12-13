@@ -1,15 +1,15 @@
-package src;
+package src.model;
 
-public class Student extends Person {
-    private String personType = "student";
+public class Developer extends Person {
+    private final Role personRole = Role.DEVELOPER;
     private double accountLimit = 2000.0;
 
-    public Student() {
+    public Developer() {
         super(); // Calls the default constructor of the Person class
     }
 
     // Parameterized constructor
-    public Student(String name, 
+    public Developer(String name, 
                     int age, 
                     String iban, 
                     double account_balance,
@@ -20,7 +20,14 @@ public class Student extends Person {
     @Override
     public void displayInfo() {
         System.out.println(String.format("I am %s %s. Account status is: %.2f, limit is set to %.2f", 
-        personType, name, account_balance, accountLimit));
+        personRole, getName(), getAccountBalance(), accountLimit));
+    }
+
+    @Override
+    public String getRole() {
+        return personRole.toString();
+
+
     }
 
 }
