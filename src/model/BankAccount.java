@@ -6,18 +6,12 @@ public class BankAccount {
     private double accountLimit;
     private double creditCardLimit;
 
-    private Card creditCard;
-    private Card debitCard;
-
-
     // Constructor
     public BankAccount(String iban, double accountBalance, double accountLimit, double creditCardLimit) {
         this.iban = iban;
         this.accountBalance = accountBalance;
         this.accountLimit = accountLimit;
         this.creditCardLimit = creditCardLimit;
-        this.creditCard = null;
-        this.debitCard = null;
     }
 
     public void addCreditCard() {
@@ -35,11 +29,12 @@ public class BankAccount {
         accountBalance -= amount;
     }
 
-    public void payOffOwnCredit(double amount, String cardNumber) throws IllegalArgumentException {
+    public boolean payOffOwnCredit(double amount, String creditCard) throws IllegalArgumentException {
         if ((accountBalance - amount) < accountLimit) {
             throw new IllegalArgumentException("Insufficient funds or exceeds account limit");
         }
         accountBalance -= amount;
+        return true;
     }
 
     public String getIban() {

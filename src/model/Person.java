@@ -36,11 +36,7 @@ public abstract class Person {
     }
 
     public void setName(String name) {
-        // The keyword this refers to the current instance of the class (i.e., the object).
-        // In a setter method, you're typically receiving a parameter (local variable)
-        // that has the same name as an instance variable. To differentiate between
-        //  the instance variable (field) and the parameter, you use this.
-        this.name = name;
+     this.name = name;
     }
 
     public int getAge() {
