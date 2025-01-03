@@ -1,10 +1,12 @@
 package src.model;
 
 import src.config.CreditCardLimit;
+import src.config.AccountMinimumBalance;
 
 public class Student extends Person {
     private final Role personRole = Role.STUDENT;
-    private double accountLimit;
+    private double accountMinimumBalance;
+    private double creditCardLimit;
 
     public Student() {
         super(); // Calls the default constructor of the Person class
@@ -14,16 +16,16 @@ public class Student extends Person {
     public Student(String name,
             int age,
             String iban,
-            double account_balance,
             String address) {
         super(name, age, iban, address); // Calls the parameterized constructor of the Person class
-        this.accountLimit = CreditCardLimit.STUDENT_ACCOUNT_LIMIT; // Default limit
+        this.accountMinimumBalance = CreditCardLimit.STUDENT_CREDIT_LIMIT; // Default limit
+        this.creditCardLimit = AccountMinimumBalance.STUDENT_MINIMUM_BALANCE;
     }
 
     @Override
     public void displayInfo() {
-        System.out.println(String.format("I am %s %s. Limit is set to %.2f",
-                personRole, getName(), accountLimit));
+        System.out.println(String.format("I am %s %s.",
+                personRole, getName()));
     }
 
     @Override
@@ -31,24 +33,24 @@ public class Student extends Person {
         return personRole.toString();
     }
 
-    public double getAccountLimit() {
-        return accountLimit;
+    public Role getPersonRole() {
+        return personRole;
     }
 
-    public void increaseAccountLimit(double newLimit) {
-        if (newLimit > accountLimit) {
-            this.accountLimit = newLimit;
-        } else {
-            System.out.println("New limit must be higher than the current limit.");
-        }
+    public double getAccountMinimumBalance() {
+        return accountMinimumBalance;
     }
 
-    public void decreaseAccountLimit(double newLimit) {
-        if (newLimit < accountLimit) {
-            this.accountLimit = newLimit;
-        } else {
-            System.out.println("New limit must be lower than the current limit.");
-        }
+    public void setAccountMinimumBalance(double accountMinimumBalance) {
+        this.accountMinimumBalance = accountMinimumBalance;
+    }
+
+    public double getCreditCardLimit() {
+        return creditCardLimit;
+    }
+
+    public void setCreditCardLimit(double creditCardLimit) {
+        this.creditCardLimit = creditCardLimit;
     }
 
 }

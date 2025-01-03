@@ -1,4 +1,5 @@
 package src.model;
+import src.exceptions.InsufficientFundsException;
 
 public class BankAccount {
     private String iban;
@@ -22,16 +23,16 @@ public class BankAccount {
         accountBalance += amount;
     }
 
-    public void withdraw(double amount) throws IllegalArgumentException {
+    public void withdraw(double amount) throws InsufficientFundsException {
         if ((accountBalance - amount) < accountLimit) {
-            throw new IllegalArgumentException("Insufficient funds or exceeds account limit");
+            throw new InsufficientFundsException("Insufficient funds or exceeds account limit");
         }
         accountBalance -= amount;
     }
 
-    public boolean payOffOwnCredit(double amount, String creditCard) throws IllegalArgumentException {
+    public boolean payOffOwnCredit(double amount, String creditCard) throws InsufficientFundsException {
         if ((accountBalance - amount) < accountLimit) {
-            throw new IllegalArgumentException("Insufficient funds or exceeds account limit");
+            throw new InsufficientFundsException();
         }
         accountBalance -= amount;
         return true;
