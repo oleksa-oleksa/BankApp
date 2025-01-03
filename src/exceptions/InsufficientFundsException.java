@@ -6,7 +6,7 @@ public class InsufficientFundsException extends Exception {
     public InsufficientFundsException() {
         super(ERROR_NOT_ENOUGH_MONEY);
     }
-    
+
     public InsufficientFundsException(String message) {
         super(message);
     }

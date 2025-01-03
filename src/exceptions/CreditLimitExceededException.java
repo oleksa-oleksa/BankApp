@@ -6,7 +6,7 @@ public class CreditLimitExceededException extends Exception {
     public CreditLimitExceededException() {
         super(ERROR_CREDIT_LIMIT_EXCEEDED);
     }
-    
+
     public CreditLimitExceededException(String message) {
         super(message);
     }
