@@ -1,7 +1,8 @@
 package src.model;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import src.config.AccountType;
 
 public abstract class Person {
     private String name;
@@ -9,26 +10,22 @@ public abstract class Person {
     private String iban;
     private String address;
     private List<BankAccount> bankAccounts;
+    private AccountType accountType;
 
-
-    // Default constructor
-    public Person() {
-        this.name = "Unknown";
-        this.age = 0;
-        this.bankAccounts = new ArrayList<>();
-    }
 
     // Parameterized constructor
     public Person(String name, 
                   int age, 
                   String iban, 
                   String address,
-                  List<BankAccount> bankAccounts) {
+                  List<BankAccount> bankAccounts,
+                  AccountType accountType) {
         this.name = name;
         this.age = age;
         this.iban = iban;
         this.address = address;
         this.bankAccounts = bankAccounts;
+        this.accountType = accountType;
     }
 
     public void displayInfo() {
@@ -78,6 +75,19 @@ public abstract class Person {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void setBankAccounts(List<BankAccount> bankAccounts) {
+        this.bankAccounts = bankAccounts;
+    }
+
+    public AccountType getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(AccountType accountType) {
+        this.accountType = accountType;
     } 
 
+    
 }
