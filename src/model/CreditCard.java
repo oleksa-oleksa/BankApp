@@ -12,10 +12,12 @@ public class CreditCard extends Card {
     private boolean HasOverdraft = false;
     private boolean isCreditPaid = false;
 
-
-    public CreditCard(String cardNummer, BankAccount bankAccount, double creditLimit) {
+    public CreditCard(String cardNummer,
+                      BankAccount bankAccount,
+                      double creditLimit,
+                      Person owner) {
         super(cardNummer, bankAccount);
-        this.creditLimit = creditLimit;
+        this.creditLimit = owner.getAccountType().getCreditLimit();;
         this.currentCrediBalance = 0.0; // Balance starts at 0
     }
 

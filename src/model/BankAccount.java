@@ -7,19 +7,16 @@ public class BankAccount {
     private String iban;
     private double accountBalance;
     private double accountMinimumBalance;
-    private double creditCardLimit;
     private List<Card> cards;
 
     // Constructor
     public BankAccount(String iban, 
                        double initialBalance, 
-                       double accountMinimumBalance, 
-                       double creditCardLimit,
-                       List<Card> cards) {
+                       List<Card> cards,
+                       Person owner) {
         this.iban = iban;
         this.accountBalance = initialBalance;
-        this.accountMinimumBalance = accountMinimumBalance;
-        this.creditCardLimit = creditCardLimit;
+        this.accountMinimumBalance = owner.getAccountType().getMinimumBalance();;
         this.cards = cards;
     }
 
@@ -81,12 +78,7 @@ public class BankAccount {
         this.accountMinimumBalance = newAccountMinimumBalance;
     }
 
-    public double getCreditCardLimit() {
-        return creditCardLimit;
-    }
-
-    public void setCreditCardLimit(double creditCardLimit) {
-        this.creditCardLimit = creditCardLimit;
-    }
-
+    public void setCards(List<Card> cards) {
+        this.cards = cards;
+    }   
 }
