@@ -9,6 +9,11 @@ public abstract class Card {
         this.bankAccount = bankAccount;
     }
 
+    // Set the associated bank account
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
     public String getCardNumber() {
         return cardNumber;
     }

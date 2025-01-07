@@ -1,8 +1,7 @@
 package src.config;
 
 public enum Role {
+    DEFAULT,
     STUDENT,
-    DEVELOPER,
-    TEACHER,
-    RESEARCHER
+    UNEMPLOYED
 }
