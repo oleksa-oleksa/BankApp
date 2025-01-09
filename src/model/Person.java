@@ -1,11 +1,12 @@
 package src.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import src.config.AccountType;
 
-public abstract class Person {
+public class Person {
     private final String id; // Unique ID for each person
     private String name;
     private int age;
@@ -18,14 +19,13 @@ public abstract class Person {
     public Person(String name, 
                   int age, 
                   String address,
-                  List<BankAccount> bankAccounts,
                   AccountType accountType) {
 
         this.id = UUID.randomUUID().toString(); // Generate a unique ID
         this.name = name;
         this.age = age;
         this.address = address;
-        this.bankAccounts = bankAccounts;
+        this.bankAccounts = new ArrayList<>(); // Initialize as empty.  Allows Creating a Person Without Bank Accounts
         this.accountType = accountType;
     }
 
@@ -33,9 +33,7 @@ public abstract class Person {
         System.out.println(String.format("I am %s, %d years old. My adress is %s.", 
                                                  name, age, address));
     }
-    // Abstract method for role-specific information
-    public abstract String getRole();
-
+    
     // Add a bank account to the person
     public void addBankAccount(BankAccount account) {
         bankAccounts.add(account);

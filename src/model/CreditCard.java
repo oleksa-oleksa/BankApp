@@ -1,5 +1,7 @@
 package src.model;
 
+import java.math.BigDecimal;
+
 import src.config.CardType;
 import src.exceptions.InsufficientFundsException;
 import src.exceptions.CreditLimitExceededException;
@@ -7,46 +9,48 @@ import src.exceptions.CreditLimitExceededException;
 public class CreditCard extends Card {
     private final CardType cardType = CardType.CREDIT_CARD;
     private String cardNumber;
-    private double creditLimit;
-    private double currentCrediBalance;
+    private BankAccount bankAccount;
+    private BigDecimal creditLimit;
+    private BigDecimal currentCrediBalance;
     private boolean HasOverdraft = false;
     private boolean isCreditPaid = false;
 
     public CreditCard(String cardNummer,
                       BankAccount bankAccount,
-                      double creditLimit,
                       Person owner) {
         super(cardNummer, bankAccount);
         this.creditLimit = owner.getAccountType().getCreditLimit();;
-        this.currentCrediBalance = 0.0; // Balance starts at 0
+        this.currentCrediBalance = new BigDecimal("0.0"); // Balance starts at 0
     }
 
-    private void validateCreditLimit(double amount) throws CreditLimitExceededException{
-        if (currentCrediBalance + amount > creditLimit) {
+    private void validateCreditLimit(BigDecimal amount) throws CreditLimitExceededException{
+        //if (currentCrediBalance + amount > creditLimit)
+        // -1, 0, or 1 as this BigDecimal is numerically less than, equal to, or greater than val.
+        if ((currentCrediBalance.add(amount)).compareTo(creditLimit) > 0) {
             throw new CreditLimitExceededException();
         }
     }
 
     private void validateAccountStatement() throws InsufficientFundsException {
-        if (getBankAccount().getAccountBalance() > currentCrediBalance) {
+        if (getBankAccount().getAccountBalance().compareTo(currentCrediBalance) > 0) {
             throw new InsufficientFundsException();
         }
     }
 
-    public void makePurchase(double amount) throws CreditLimitExceededException{
+    public void makePurchase(BigDecimal amount) throws CreditLimitExceededException{
         validateCreditLimit(amount); // This will throw an exception if validation fails.
-        currentCrediBalance += amount; // Only executed if validation passes.
+        currentCrediBalance = currentCrediBalance.add(amount); // Only executed if validation passes.
     }
 
     public boolean payOffMontlyCredit() throws InsufficientFundsException {
         boolean isPaid = false;
-        if (currentCrediBalance > 0) {
+        if (currentCrediBalance.compareTo(BigDecimal.ZERO) > 0) {
             validateAccountStatement();
             // Attempt to pay off the credit balance through the associated bank account.
             isPaid = getBankAccount().payOffOwnCredit(currentCrediBalance, cardNumber);     
         }  
         if (isPaid) {
-            currentCrediBalance = 0; // Reset credit balance after successful payment.
+            currentCrediBalance = BigDecimal.ZERO; // Reset credit balance after successful payment.
             this.isCreditPaid = true; // Mark credit as fully paid.
         }     
         return isPaid;
@@ -57,11 +61,11 @@ public class CreditCard extends Card {
         return cardType.toString();
     }
 
-    public double getCreditLimit() {
+    public BigDecimal getCreditLimit() {
         return creditLimit;
     }
 
-    public void setCreditLimit(double creditLimit) {
+    public void setCreditLimit(BigDecimal creditLimit) {
         this.creditLimit = creditLimit;
     }
     
@@ -73,11 +77,11 @@ public class CreditCard extends Card {
         this.cardNumber = cardNumber;
     }
 
-    public double getCurrentCrediBalance() {
+    public BigDecimal getCurrentCrediBalance() {
         return currentCrediBalance;
     }
 
-    public void setCurrentCrediBalance(double currentCrediBalance) {
+    public void setCurrentCrediBalance(BigDecimal currentCrediBalance) {
         this.currentCrediBalance = currentCrediBalance;
     }
 
@@ -95,6 +99,18 @@ public class CreditCard extends Card {
 
     public void setCreditPaid(boolean isCreditPaid) {
         this.isCreditPaid = isCreditPaid;
+    }
+
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
+    }
+
+    public boolean isHasOverdraft() {
+        return HasOverdraft;
     }    
 
 }

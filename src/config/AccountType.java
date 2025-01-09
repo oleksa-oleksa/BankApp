@@ -1,23 +1,25 @@
 package src.config;
 
+import java.math.BigDecimal;
+
 public enum AccountType {
-    DEFAULT(2000.0, 25.0),
-    STUDENT(1000.0, 10.0),
-    UNEMPLOYED(500.0, 5.0);
+    DEFAULT(new BigDecimal("2000.00"), new BigDecimal("25.00")),
+    STUDENT(new BigDecimal("1000.00"), new BigDecimal("10.00")),
+    UNEMPLOYED(new BigDecimal("500.00"), new BigDecimal("5.00"));
 
-    private final double creditLimit;
-    private final double minimumBalance;
+    private final BigDecimal creditLimit;
+    private final BigDecimal minimumBalance;
 
-    AccountType(double creditLimit, double minimumBalance) {
+    AccountType(BigDecimal creditLimit, BigDecimal minimumBalance) {
         this.creditLimit = creditLimit;
         this.minimumBalance = minimumBalance;
     }
 
-    public double getCreditLimit() {
+    public BigDecimal getCreditLimit() {
         return creditLimit;
     }
 
-    public double getMinimumBalance() {
+    public BigDecimal getMinimumBalance() {
         return minimumBalance;
     }
 }
