@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import src.config.AccountType;
+import src.exceptions.CreditLimitExceededException;
 import src.exceptions.InsufficientFundsException;
 
 public class BankAccount {
@@ -44,6 +45,15 @@ public class BankAccount {
         }
         accountBalance = accountBalance.subtract(amount);
     }
+
+    public static void handleCreditCardPurchase(CreditCard card, BigDecimal amount) {
+    try {
+        card.makePurchase(amount);
+        System.out.println("Purchase successful!");
+    } catch (CreditLimitExceededException e) {
+        System.err.println("Purchase failed: " + e.getMessage());
+    }
+}
 
     public boolean payOffOwnCredit(BigDecimal amount, String creditCard) throws InsufficientFundsException {
         if ((accountBalance.subtract(amount)).compareTo(accountMinimumBalance) < 0) {
