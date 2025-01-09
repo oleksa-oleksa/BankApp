@@ -34,7 +34,6 @@ public class CreditCard extends Card {
     }
 
     public void makePurchase(double amount) throws CreditLimitExceededException{
-        
         validateCreditLimit(amount); // This will throw an exception if validation fails.
         currentCrediBalance += amount; // Only executed if validation passes.
     }

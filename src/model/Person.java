@@ -1,13 +1,14 @@
 package src.model;
 
 import java.util.List;
+import java.util.UUID;
 
 import src.config.AccountType;
 
 public abstract class Person {
+    private final String id; // Unique ID for each person
     private String name;
     private int age;
-    private String iban;
     private String address;
     private List<BankAccount> bankAccounts;
     private AccountType accountType;
@@ -16,13 +17,13 @@ public abstract class Person {
     // Parameterized constructor
     public Person(String name, 
                   int age, 
-                  String iban, 
                   String address,
                   List<BankAccount> bankAccounts,
                   AccountType accountType) {
+
+        this.id = UUID.randomUUID().toString(); // Generate a unique ID
         this.name = name;
         this.age = age;
-        this.iban = iban;
         this.address = address;
         this.bankAccounts = bankAccounts;
         this.accountType = accountType;
@@ -61,14 +62,6 @@ public abstract class Person {
         this.age = age;
     } 
 
-    public String getIban() {
-        return iban;
-    }
-
-    public void setIban(String iban) {
-        this.iban = iban;
-    } 
-
     public String getAddress() {
         return address;
     }
@@ -89,5 +82,8 @@ public abstract class Person {
         this.accountType = accountType;
     } 
 
+    public String getId() {
+        return id;
+    }
     
 }
