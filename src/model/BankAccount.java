@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import src.config.AccountType;
-import src.exceptions.CreditLimitExceededException;
 import src.exceptions.InsufficientFundsException;
 
 public class BankAccount {
