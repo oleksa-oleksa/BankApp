@@ -1,10 +1,10 @@
-package src.model;
+package bagabank.model;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import bagabank.config.AccountType;
 
-import src.config.AccountType;
 
 public class Person {
     private final String id; // Unique ID for each person

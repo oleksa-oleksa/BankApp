@@ -1,10 +1,10 @@
-package src.model;
+package bagabank.model;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.config.AccountType;
-import src.exceptions.InsufficientFundsException;
+import bagabank.config.AccountType;
+import bagabank.exceptions.InsufficientFundsException;
 
 public class BankAccount {
     private String iban;

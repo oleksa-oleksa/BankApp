@@ -1,4 +1,4 @@
-package src.exceptions;
+package bagabank.exceptions;
 
 public class CreditLimitExceededException extends Exception {
     private static final String ERROR_CREDIT_LIMIT_EXCEEDED = "Purchase exceeds credit limit";

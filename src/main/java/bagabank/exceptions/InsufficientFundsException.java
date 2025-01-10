@@ -1,4 +1,4 @@
-package src.exceptions;
+package bagabank.exceptions;
 
 public class InsufficientFundsException extends Exception {
     private static final String ERROR_NOT_ENOUGH_MONEY = "Not enough money on bank account to proceed";

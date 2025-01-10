@@ -1,4 +1,4 @@
-package src.config;
+package bagabank.config;
 
 public enum CardType {
     CREDIT_CARD,

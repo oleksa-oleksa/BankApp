@@ -1,4 +1,4 @@
-package src.config;
+package bagabank.config;
 
 import java.math.BigDecimal;
 

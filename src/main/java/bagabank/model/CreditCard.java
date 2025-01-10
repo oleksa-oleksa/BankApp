@@ -1,10 +1,10 @@
-package src.model;
+package bagabank.model;
 
 import java.math.BigDecimal;
 
-import src.config.CardType;
-import src.exceptions.InsufficientFundsException;
-import src.exceptions.CreditLimitExceededException;
+import bagabank.config.CardType;
+import bagabank.exceptions.InsufficientFundsException;
+import bagabank.exceptions.CreditLimitExceededException;
 
 public class CreditCard extends Card {
     private final CardType cardType = CardType.CREDIT_CARD;

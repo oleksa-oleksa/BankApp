@@ -1,4 +1,4 @@
-package src.model;
+package bagabank.model;
 
 public abstract class Card {
     private String cardNumber;

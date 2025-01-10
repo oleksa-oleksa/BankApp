@@ -1,14 +1,14 @@
-package src.app;
+package bagabank.app;
 
-import src.model.Person;
-import src.model.BankAccount;
-import src.model.CreditCard;
-import src.service.PersonService;
+import bagabank.model.Person;
+import bagabank.model.BankAccount;
+import bagabank.model.CreditCard;
+import bagabank.service.PersonService;
 
 import java.math.BigDecimal;
 
-import src.config.AccountType;
-import src.exceptions.CreditLimitExceededException;
+import bagabank.config.AccountType;
+import bagabank.exceptions.CreditLimitExceededException;
 
 public class Main {
     public static void main(String[] args) throws CreditLimitExceededException {

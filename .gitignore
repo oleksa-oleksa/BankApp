@@ -1,0 +1,6 @@
+.DS_Store
+# Ignore Maven build artifacts
+target/
+bank/target
+
+.vscode/

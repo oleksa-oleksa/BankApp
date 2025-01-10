@@ -1,9 +1,9 @@
-package src.service;
+package bagabank.service;
 import java.util.HashMap;
 import java.util.Map;
-import src.model.BankAccount;
-import src.model.Person;
-import src.model.CreditCard;
+import bagabank.model.BankAccount;
+import bagabank.model.Person;
+import bagabank.model.CreditCard;
 
 public class PersonService {
     private Map<String, Person> personMap = new HashMap<>(); // Keyed by Person ID
