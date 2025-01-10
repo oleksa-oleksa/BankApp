@@ -31,8 +31,13 @@ public class Main {
         System.out.println("Person ID: " + person.getId());
         System.out.println("Account Balance: " + bankAccount.getAccountBalance());
 
+        //System.out.println("Card's Number: " + card.getCardNumber());
+
+
         card.makePurchase(new BigDecimal("1000.00"));
         
-        card.makePurchase(new BigDecimal("1200.00"));   
+        card.makePurchase(new BigDecimal("1200.00"));
+        
+        card.displayCurrentCrediBalance();
     }        
 }

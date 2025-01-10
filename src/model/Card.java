@@ -9,6 +9,10 @@ public abstract class Card {
         this.bankAccount = bankAccount;
     }
 
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
     // Set the associated bank account
     public void setBankAccount(BankAccount bankAccount) {
         this.bankAccount = bankAccount;
@@ -18,11 +22,12 @@ public abstract class Card {
         return cardNumber;
     }
 
-    public BankAccount getBankAccount() {
-        return bankAccount;
-    }
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    } 
 
     // Abstract method to get the card type
-    public abstract String getCardType();    
+    public abstract String getCardType();
+   
     
 }

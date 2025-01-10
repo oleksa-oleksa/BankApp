@@ -20,7 +20,7 @@ public class CreditCard extends Card {
                       Person owner) {
         super(cardNummer, bankAccount);
         this.creditLimit = owner.getAccountType().getCreditLimit();;
-        this.currentCrediBalance = new BigDecimal("0.0"); // Balance starts at 0
+        this.currentCrediBalance = BigDecimal.ZERO; // Balance starts at 0
     }
 
     private void validateCreditLimit(BigDecimal amount) throws CreditLimitExceededException{
@@ -73,16 +73,14 @@ public class CreditCard extends Card {
         this.creditLimit = creditLimit;
     }
     
-    public String getCardNumber() {
-        return cardNumber;
-    }
-
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
-    }
 
     public BigDecimal getCurrentCrediBalance() {
         return currentCrediBalance;
+    }
+
+    public void displayCurrentCrediBalance() {
+        System.out.println(String.format("Credit card: %s. Current balance is -%s.", 
+                                    getCardNumber(), getCurrentCrediBalance()));
     }
 
     public void setCurrentCrediBalance(BigDecimal currentCrediBalance) {
