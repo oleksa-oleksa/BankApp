@@ -23,7 +23,7 @@ public class CreditCard extends Card {
         this.currentCrediBalance = BigDecimal.ZERO; // Balance starts at 0
     }
 
-    private boolean validateCreditLimit(BigDecimal amount) throws CreditLimitExceededException {
+    protected boolean validateCreditLimit(BigDecimal amount) throws CreditLimitExceededException {
         try {
             if ((currentCrediBalance.add(amount)).compareTo(creditLimit) > 0) {
                 throw new CreditLimitExceededException();
