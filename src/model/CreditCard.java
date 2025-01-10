@@ -23,11 +23,15 @@ public class CreditCard extends Card {
         this.currentCrediBalance = BigDecimal.ZERO; // Balance starts at 0
     }
 
-    private void validateCreditLimit(BigDecimal amount) throws CreditLimitExceededException{
-        //if (currentCrediBalance + amount > creditLimit)
-        // -1, 0, or 1 as this BigDecimal is numerically less than, equal to, or greater than val.
-        if ((currentCrediBalance.add(amount)).compareTo(creditLimit) > 0) {
-            throw new CreditLimitExceededException();
+    private boolean validateCreditLimit(BigDecimal amount) throws CreditLimitExceededException {
+        try {
+            if ((currentCrediBalance.add(amount)).compareTo(creditLimit) > 0) {
+                throw new CreditLimitExceededException();
+            }
+            return true; // Validation succeeded
+        } catch (CreditLimitExceededException e) {
+            System.err.println("Validation failed: " + e.getMessage());
+            return false; // Validation failed
         }
     }
 
@@ -37,13 +41,15 @@ public class CreditCard extends Card {
         }
     }
 
-    public void makePurchase(BigDecimal amount) throws CreditLimitExceededException{
-        try {
-            validateCreditLimit(amount); // This will throw an exception if validation fails.
-        } catch (CreditLimitExceededException e) {
-            System.err.println("Purchase failed: " + e.getMessage());
+    public void makePurchase(BigDecimal amount) throws CreditLimitExceededException {
+      
+        if (validateCreditLimit(amount)) { // This will throw an exception if validation fails.
+                currentCrediBalance = currentCrediBalance.add(amount); // Only executed if validation passes.
+                System.out.println(String.format("Purchase for %s succedded!", amount));
         }
-        currentCrediBalance = currentCrediBalance.add(amount); // Only executed if validation passes.
+        else { 
+            System.err.println(String.format("Purchase for %s failed!", amount));
+        }
     }
 
     public boolean payOffMontlyCredit() throws InsufficientFundsException {
@@ -79,8 +85,15 @@ public class CreditCard extends Card {
     }
 
     public void displayCurrentCrediBalance() {
+        if ((currentCrediBalance.compareTo(BigDecimal.ZERO)) == 0) {
+            
+            System.out.println(String.format("Credit card: %s. Current balance is %s. No credit obligations!", 
+                                    getCardNumber(), currentCrediBalance));
+        }
+        else {
         System.out.println(String.format("Credit card: %s. Current balance is -%s.", 
-                                    getCardNumber(), getCurrentCrediBalance()));
+                                    getCardNumber(), currentCrediBalance));
+        }
     }
 
     public void setCurrentCrediBalance(BigDecimal currentCrediBalance) {
