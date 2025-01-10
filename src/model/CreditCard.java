@@ -38,7 +38,11 @@ public class CreditCard extends Card {
     }
 
     public void makePurchase(BigDecimal amount) throws CreditLimitExceededException{
-        validateCreditLimit(amount); // This will throw an exception if validation fails.
+        try {
+            validateCreditLimit(amount); // This will throw an exception if validation fails.
+        } catch (CreditLimitExceededException e) {
+            System.err.println("Purchase failed: " + e.getMessage());
+        }
         currentCrediBalance = currentCrediBalance.add(amount); // Only executed if validation passes.
     }
 
